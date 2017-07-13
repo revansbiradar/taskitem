@@ -1,0 +1,67 @@
+{% extends "index.html"%}
+
+
+<body>
+
+
+	{% block content %}
+	<div >
+	<div class="container ">
+		<div class="row">
+			
+			<div class="col-md-12">
+
+		
+							<form id="branchForm" action="{% url 'brand_add' %}"
+								class="sky-form" method="POST">
+
+								{% csrf_token %}
+								<div><span class="error">                 
+                      			{{form.errors}}</span></div>
+								<header>Add Branch</header>
+								<input type="hidden" name="saveType" value="{{save_type_status}}" id="saveType_id">
+								<fieldset>
+									<div class="row">
+
+
+										<section class="col col-6">
+										   <label class="form_lab_css">Branch :</label>
+											<label class="input">  <input type="text"
+												name="name" placeholder=""
+												value="{{form.name.value|default_if_none:''}}">
+											</label>
+										</section>
+
+										<section class="col col-6">
+											
+										</section>
+
+									</div>
+	
+								</fieldset>
+								<footer>
+									<button type="submit" class="btn btn-primary">Save</button>
+							
+									<a class="btn btn-danger" href="{% url 'brand_list' %}" style="color:white !important">Cancel</a>
+								</footer>
+							</form>
+						</div>
+					</div>
+					</div>
+				
+				</div>
+
+<script>
+$(document).ready(function(){
+	$("#save_and_add").click(function(){
+		$("#saveType_id").val("true");
+		$("#branchForm").submit();
+
+	});
+	
+
+});
+</script>
+
+			</body>
+			{% endblock %}

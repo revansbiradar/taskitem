@@ -1,0 +1,199 @@
+{% load staticfiles %}
+{% load displayTags %}
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Task</title>
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' type='text/css' media='all' />
+
+  <link rel='stylesheet' href='{% static "css/app.css" %}' type='text/css' media='all' />
+<style type="text/css">
+  .learn h5
+  {
+    color:#fff;
+    border-radius: 3px; 
+  }
+  .learn-btn
+  {
+    color:#333;
+    background-color:#fff;
+    border-radius: 3px; 
+  }
+  .dropdown-menu{
+    left: 220px;
+    width: 0px;
+  }
+  .dropdown-menu li{
+    font-size: 10px
+  }
+
+</style>
+</head>
+<body class="home blog">
+
+<nav class = "navbar navbar-default" role = "navigation">
+    <div class = "navbar-header">
+      <a class = "navbar-brand" href = "{% url 'index' %}">
+        <img src="{% static 'task.png' %}" style="width:75px;height:56px;;margin-top:-15px;">
+      </a>
+    </div>
+   
+    <div>
+      <ul class = "nav navbar-nav">
+         <li><a href = "#">Home</a></li>
+         <li><a href = "#">Invite</a></li>   
+
+      </ul>
+    </div>
+
+    <div class="pull-right">
+      <ul class = "nav navbar-nav">
+         <li class = ""><a href = "#">$0.00</a></li>
+         <i class="fa fa-smile-o fa-pull-left fa-4x" aria-hidden="true" style="color: silver;"></i>  
+      </ul>
+    </div>
+
+   
+</nav>
+
+{% block content %}
+
+<div class="content-area-wrap container-fluid">
+
+<!-- end mobile header -->  <!-- start main content -->
+  <div class="container-fluid main-content-wrap">
+    <div class="row posts-wrap-outer">
+
+      <div class="col-md-4 col-xs-6">
+        <!-- small box -->
+        <div id='outer-container' style='position:relative;top:1px'>
+
+            <img src="{% static 'black.jpg' %}" style='position:absolute;width:300px;height:120px;z-index:0;' />
+              <h2 style="position: absolute;color:white;font-size: 11px;margin-left: 15px; top: -15px;"> COMPLETE YOUR PROFILE!<span style="margin-left:10px;">EARN $1</span></h2>
+
+              <div class="progress" style='position:absolute;top:50px;left:0;z-index:1;margin-left: 15px; width:260px;height: 6px'>
+                <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%;">
+                </div>
+              </div>
+              <h4 style="position: absolute;color:white;font-size:8px;margin-left:15px; top:60px;margin-top:0px">progress 10%</h4>
+        </div>
+      </div>
+
+    <div class="col-md-8 post-wrap">
+        <a href="#">
+        <article id="23" class="post post-single  post-23 type-post status-publish format-status has-post-thumbnail hentry category-status tag-post-format tag-status post_format-post-format-status" style="background-image: url({% static 'img/mountain.jpg' %});" >
+      <div class="post-content">
+            <header class="post-header">
+            <h3 class="post-title">Facebook Status Post</h3>
+            <div class="post-meta">
+              February 4, 2016            </div>
+        </header>
+        <br>
+        <div class="post-excerpt">
+          <p>Suspendisse at imperdiet quam, ut imperdiet velit. Vestibulum sed elit at augue sollicitudin gravida in quis urna.</p>
+        </div>
+      <div class="learn">
+          <h5>Earn $ for every new customer</h5>
+          <button class="btn btn-default learn-btn">Learn More</button>
+        
+      </div>
+        
+      </div>
+    </article>
+  </a>
+</div>
+
+</div>
+
+
+
+<div class="row">
+  <div class="col-md-offset-4">
+      <div class="row ">
+        <div class="page-count">
+            <h4 style="margin-left: 15px;">Available opportunities</h4>
+        </div>
+      </div>
+      
+          <!-- start pagination -->
+          <div class="row pagination-wrap">
+            <div class="col-xs-5 pagination-count-wrap">
+            </div>
+            <div class="col-xs-7 pagination-link-wrap">
+               <li class = "dropdown">
+                  <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">
+                     Brands 
+                     <b class = "caret"></b>
+                  </a>
+                  <ul class = "dropdown-menu">
+                      {% for brand in brands %}
+                        <li><a href = "#">{{brand.name}}</a></li>
+                     {% endfor %}
+                  </ul>
+               </li>
+            </div>
+          </div>
+          <!-- end pagination -->
+        
+      {% for item in items %}
+           
+        <div class="col-md-6 post-wrap">
+          <a href="{% url 'index' %}">
+                <article id="23" class="post post-single  post-23 type-post status-publish format-status has-post-thumbnail hentry category-status tag-post-format tag-status post_format-post-format-status" style="background-image: url({{item.image.url}});" >
+                <!-- <img src="{{item.image}}"> -->
+              <div class="post-content">
+                <header class="post-header">
+                    <h3 class="post-title">{{item.name}} </h3>
+                    <div class="post-meta">
+                      {{ item.title}}
+                    </div><br>
+                    
+                  </header>
+                <div class="post-excerpt">
+                  <p>{{ item.description }}
+                </div>
+                  <div>
+                    <button class="btn btn-default learn-btn" style="margin-top:10px">Learn More</button>
+                  </div>
+              </div>
+            </article>
+          </a>
+        </div>
+        
+    {% endfor %}
+  </div>
+</div>
+<!-- end-post --> 
+  <!-- end main content -->
+</div>
+
+{% endblock %}
+  <!-- start footer -->
+  <footer class="main-footer" style="margin-top: 28px;margin-left: 333px;">
+    
+      <div class="row">
+        <!-- start social links -->
+        <div class="col-md-8 social-links-wrap">
+          <ul class="social-links">
+            <li><a href="#"><i class="fa fa-facebook"></i></a></li><li><a href="#"><i class="fa fa-twitter"></i></a></li><li><a href="#"><i class="fa fa-dribbble"></i></a></li><li><a href="#"><i class="fa fa-instagram"></i></a></li><li><a href="#"><i class="fa fa-rss"></i></a></li> </ul>
+        </div>        
+   
+      
+    </div>
+  </footer>
+
+  <!-- end footer -->
+  <a href="#" id="back-to-top">
+    <i class="fa fa-long-arrow-up"></i>
+    <span>top</span>
+  </a>
+  <script src = "{% static 'js/jquery.min.js' %}"></script>
+  <script src = "{% static 'js/bootstrap.min.js' %}"></script>
+
+</body>
+</html>

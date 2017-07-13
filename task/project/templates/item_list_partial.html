@@ -1,0 +1,59 @@
+
+{% extends "index.html"%}	
+ <html>
+ <head>
+ {% block title %}
+ <div class="box">
+ 	<h4 align="center" class="list">Item Details</h4>
+ 
+ </div>
+ {% endblock title %}
+ </head>
+<body>
+ 	
+{% block content %}
+<div class="row">
+			<div class="col-md-2">
+			</div>
+      <div class="col-md-9">
+        <div class="panel panel-grey margin-bottom-40">
+            <div class="panel-heading">
+              <h3 class="panel-title"><i class="fa fa-users"></i> Item
+						  <ul class="loginbar pull-right">
+						    <li>
+						      <p><a  id="courseform" href="{% url 'item_add' %}" class="btn btn-info btn-xs" ><i class="fa fa-user"></i> Create Item </a>  </p>
+						    </li>
+						  </ul>
+						  </h3>
+            </div>
+            <div class="panel-body">
+              <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Item Name</th>   
+                        <th>Item Title</th>                               
+                        <th>Description</th>
+                        <th>Edit</th>
+                        <!-- <th>Delete</th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                  {% for item in items %}
+                  <tr>
+                    <td>{{item.name}}</td>                                 
+                    <td>{{item.title}}</td>                                 
+                    <td>{{item.description}}</td>                                 
+                    <td><a href="{% url 'item_edit' id=item.id %}"><button class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Edit</button></a></td>
+                    <!-- <td><a href=""><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</button></a></td> -->
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>                      
+        </div>
+        <!--End Basic Table-->
+        </div>
+   </div> 
+   
+{% endblock %}
+ 
